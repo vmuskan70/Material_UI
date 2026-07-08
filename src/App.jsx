@@ -5,12 +5,14 @@ import {
   Card,
   CardContent,
   Container,
+  duration,
   Grid,
   IconButton,
   Toolbar,
   Typography,
 } from "@mui/material";
 import React from "react";
+import { motion, scale } from "motion/react";
 
 function App() {
   return (
@@ -28,6 +30,10 @@ function App() {
         {/* hero section */}
       </AppBar>
       <Box
+        component={motion.div}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
         sx={{
           backgroundColor: "#1976d2",
           color: "white",
@@ -36,13 +42,30 @@ function App() {
         }}
       >
         <Container>
-          <Typography variant="h3" fontWeight="bold" gutterBottom>
+          <Typography
+            variant="h3"
+            fontWeight="bold"
+            component={motion.h1}
+            initial={{ opacity: 0, y: -40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             Learn React with MUI
           </Typography>
           <Typography variant="h6" sx={{ mb: 4 }}>
             We are going to learn about Material UI Design
           </Typography>
-          <Button variant="contained" color="secondary" size="large">
+          <Button
+            component={motion.button}
+            initial={{scale:0}}
+            animate={{scale:1}}
+            transition={{duration:0.5,delay:0.6}}
+            whileHover={{scale:1.1}}
+            whileTap={{scale:0.95}}
+            variant="contained"
+            color="secondary"
+            size="large"
+          >
             Get Started
           </Button>
         </Container>
